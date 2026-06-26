@@ -1,21 +1,15 @@
-extends RigidBody2D
-var speed = 100
-
+extends CharacterBody2D
+var char: Character = Shields.new(self)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var velocity = Vector2.ZERO # The player's movement vector.
-	if Input.is_action_pressed("Right"):
-		velocity.x += 1
-	if Input.is_action_pressed("Left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("Jump"):
-		pass
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-	
-	position += velocity * delta
+func _process(_delta: float) -> void:
+	pass
+
+func _physics_process(delta:float) -> void:
+	char.handle_move(delta)
+	char.handle_jump(delta)
+	move_and_slide()

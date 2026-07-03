@@ -13,3 +13,6 @@ func _physics_process(delta:float) -> void:
 	char.handle_move(delta)
 	char.handle_jump(delta)
 	move_and_slide()
+
+func hit():
+	char.hit()

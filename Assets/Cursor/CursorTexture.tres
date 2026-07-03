@@ -1,0 +1,10 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://b1sjjvs8oxsns"]
+
+[ext_resource type="Texture2D" uid="uid://bcsowv3hw56n3" path="res://Assets/Cursor/Crosshair2-placeholder.png" id="1_rh0ne"]
+[ext_resource type="Texture2D" uid="uid://cd5et53mm2pue" path="res://Assets/Cursor/Crosshair3-placeholder.png" id="2_1ptub"]
+
+[resource]
+frames = 2
+frame_0/texture = ExtResource("1_rh0ne")
+frame_1/texture = ExtResource("2_1ptub")
+frame_1/duration = 0.4

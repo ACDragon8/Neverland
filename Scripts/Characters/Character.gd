@@ -24,15 +24,21 @@ func handle_move(delta):
 	if movement != 0:
 		move(delta)
 	else:
-		player.velocity.x -= player.velocity.x * SLIDE * delta
+		slide(delta)
 	player.velocity.x = min(abs(player.velocity.x),MAX_VELOCITY.x) * sign(player.velocity.x)
 
 func handle_jump(delta):
 	if Input.is_action_pressed("Jump") and player.is_on_floor():
 		jump(delta)
 
+func hit():
+	print("player hit")
+
 func move(delta):
 	player.velocity.x += movement * SPEED * delta
 
 func jump(delta):
 	player.velocity.y = -JUMP_HEIGHT
+	
+func slide(delta):
+	player.velocity.x -= player.velocity.x * SLIDE * delta

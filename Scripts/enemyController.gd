@@ -11,5 +11,5 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	enemy.handle_movement(delta)
 
-func hit():
-	enemy.hit()
+func on_hit(hit_area):
+	enemy.on_hit(hit_area)

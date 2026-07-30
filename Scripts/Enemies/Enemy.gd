@@ -18,3 +18,7 @@ func handle_movement(delta):
 
 func set_move(num):
 	controller.velocity.x = num
+	
+func on_hit(hit_area):
+	print("hit")
+	

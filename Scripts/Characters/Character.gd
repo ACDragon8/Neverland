@@ -6,13 +6,18 @@ const GRAVITY:int = 1000
 const MAX_VELOCITY: Vector2 = Vector2(500,500)
 const SLIDE:float = 5 # higher = less slide
 
+enum PlayerStates {IDLE, ACTION, COOLDOWN }
+
 var player:CharacterBody2D
 var movement:int = 0 
+var state: PlayerStates
+
 
 
 func _init(p):
 	player = p
-	player.set_up_direction(Vector2.UP) 
+	player.set_up_direction(Vector2.UP)
+	state = PlayerStates.IDLE
 
 func handle_move(delta):
 	player.velocity.y += GRAVITY * delta
@@ -31,8 +36,20 @@ func handle_jump(delta):
 	if Input.is_action_pressed("Jump") and player.is_on_floor():
 		jump(delta)
 
+func handle_inputs(delta):
+	if state == PlayerStates.IDLE:
+		if Input.is_action_just_pressed("Attack"):
+			attack()
+		if Input.is_action_just_pressed("Ability"):
+			ability()
 func hit():
 	print("player hit")
+	
+func attack():
+	print("attack")
+
+func ability():
+	print("ability")
 
 func move(delta):
 	player.velocity.x += movement * SPEED * delta

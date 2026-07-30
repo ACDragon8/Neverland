@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ch0vntibgtse8" path="res://Prefabs/player.tscn" id="1_lc1oi"]
 [ext_resource type="PackedScene" uid="uid://djxieljdhmfuv" path="res://Prefabs/platform.tscn" id="2_8od7v"]
 [ext_resource type="PackedScene" uid="uid://c3xo8q2uwy5aa" path="res://Prefabs/enemy.tscn" id="3_qc4db"]
-[ext_resource type="Script" uid="uid://c32h66fvcmvip" path="res://Scripts/crosshair.gd" id="4_ys1qc"]
+[ext_resource type="Script" uid="uid://c32h66fvcmvip" path="res://Scripts/Crosshair.gd" id="4_ys1qc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qc4db"]
 rough = true
@@ -45,6 +45,7 @@ position = Vector2(164, 262)
 scale = Vector2(2, 1)
 
 [node name="Enemy" parent="." instance=ExtResource("3_qc4db")]
+visible = true
 position = Vector2(334, 522)
 
 [node name="Cursor" type="Node2D" parent="."]

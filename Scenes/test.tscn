@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv6upwlfedfq7"]
+[gd_scene load_steps=10 format=3 uid="uid://dv6upwlfedfq7"]
 
+[ext_resource type="Script" uid="uid://cr3a6f1mye73s" path="res://Scenes/test.gd" id="1_i3aeo"]
 [ext_resource type="PackedScene" uid="uid://ch0vntibgtse8" path="res://Prefabs/player.tscn" id="1_lc1oi"]
 [ext_resource type="PackedScene" uid="uid://djxieljdhmfuv" path="res://Prefabs/platform.tscn" id="2_8od7v"]
 [ext_resource type="PackedScene" uid="uid://c3xo8q2uwy5aa" path="res://Prefabs/enemy.tscn" id="3_qc4db"]
 [ext_resource type="Script" uid="uid://c32h66fvcmvip" path="res://Scripts/Crosshair.gd" id="4_ys1qc"]
+[ext_resource type="AudioStream" uid="uid://36w2dga0vruo" path="res://Assets/Woodland Fantasy.mp3" id="6_5wyu1"]
+[ext_resource type="PackedScene" uid="uid://bth2inung8lbk" path="res://Prefabs/transition_zone.tscn" id="7_5wyu1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qc4db"]
 rough = true
@@ -12,9 +15,10 @@ rough = true
 
 [node name="Test" type="Node2D"]
 position = Vector2(-1, 0)
+script = ExtResource("1_i3aeo")
 
 [node name="Player" parent="." instance=ExtResource("1_lc1oi")]
-position = Vector2(103, 533)
+position = Vector2(29, 538)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(0, 550)
@@ -30,23 +34,69 @@ metadata/_edit_group_ = true
 shape = SubResource("WorldBoundaryShape2D_lc1oi")
 metadata/_edit_group_ = true
 
-[node name="Platform" parent="." instance=ExtResource("2_8od7v")]
-position = Vector2(169, 452)
-
-[node name="Platform2" parent="." instance=ExtResource("2_8od7v")]
-position = Vector2(439, 394)
-
-[node name="Platform3" parent="." instance=ExtResource("2_8od7v")]
-position = Vector2(681, 359)
-scale = Vector2(2, 1)
-
-[node name="Platform4" parent="." instance=ExtResource("2_8od7v")]
-position = Vector2(164, 262)
-scale = Vector2(2, 1)
-
-[node name="Enemy" parent="." instance=ExtResource("3_qc4db")]
-visible = true
-position = Vector2(334, 522)
-
 [node name="Cursor" type="Node2D" parent="."]
 script = ExtResource("4_ys1qc")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5wyu1")
+volume_db = -15.0
+autoplay = true
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("2_8od7v")]
+position = Vector2(419, 351)
+scale = Vector2(3, 1)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("2_8od7v")]
+position = Vector2(970, 170)
+scale = Vector2(2, 1)
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("2_8od7v")]
+position = Vector2(481, -69)
+scale = Vector2(2, 1)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("2_8od7v")]
+position = Vector2(-2, 159)
+scale = Vector2(2, 1)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("2_8od7v")]
+position = Vector2(-7, -455)
+scale = Vector2(4, 1)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("2_8od7v")]
+position = Vector2(888, -650)
+scale = Vector2(10, 1)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("2_8od7v")]
+position = Vector2(890, -292)
+scale = Vector2(4, 1)
+
+[node name="Wall" parent="Platforms" instance=ExtResource("2_8od7v")]
+position = Vector2(1314, -650)
+rotation = 1.5708
+scale = Vector2(12, 1)
+
+[node name="Wall2" parent="Platforms" instance=ExtResource("2_8od7v")]
+position = Vector2(-25, 549)
+rotation = 4.71239
+scale = Vector2(20, 1)
+
+[node name="To Boss" parent="." instance=ExtResource("7_5wyu1")]
+position = Vector2(891, -456)
+scale = Vector2(20, 50)
+next_zone = "uid://d3v7jqt4k2nll"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Node2D" instance=ExtResource("3_qc4db")]
+position = Vector2(538, 290)
+
+[node name="Enemy2" parent="Node2D" instance=ExtResource("3_qc4db")]
+position = Vector2(582, -92)
+
+[node name="Enemy3" parent="Node2D" instance=ExtResource("3_qc4db")]
+position = Vector2(1115, -385)
+
+[node name="Enemy4" parent="Node2D" instance=ExtResource("3_qc4db")]
+position = Vector2(193, -499)

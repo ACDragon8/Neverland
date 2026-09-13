@@ -1,15 +1,9 @@
 extends Node2D
 
-const LIFETIME = .25
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#point slash at mouse
-	look_at(get_global_mouse_position())
-	#remain for a bit
-	await get_tree().create_timer(LIFETIME).timeout
-	#disappear
-	queue_free()
+	$Player/Camera2D.limit_right = 1314
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

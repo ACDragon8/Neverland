@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://djxieljdhmfuv"]
+[gd_scene load_steps=6 format=3 uid="uid://djxieljdhmfuv"]
+
+[ext_resource type="Script" uid="uid://clku7lj3uunbx" path="res://Prefabs/platform.gd" id="1_3cjun"]
+[ext_resource type="Script" uid="uid://dg1xq66dgsife" path="res://Prefabs/Hurtbox.gd" id="1_c7tdt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qc4db"]
 rough = true
@@ -6,8 +9,12 @@ rough = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8od7v"]
 size = Vector2(100, 25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cjun"]
+size = Vector2(100, 25)
+
 [node name="Platform" type="StaticBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_qc4db")
+script = ExtResource("1_3cjun")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 100.0
@@ -19,3 +26,12 @@ metadata/_edit_lock_ = true
 position = Vector2(50, 12.5)
 shape = SubResource("RectangleShape2D_8od7v")
 metadata/_edit_lock_ = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("1_c7tdt")
+tag = "environment"
+metadata/_custom_type_script = "uid://dg1xq66dgsife"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(50, 12.5)
+shape = SubResource("RectangleShape2D_3cjun")

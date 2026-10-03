@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 var enemy:Enemy = Enemy.new(self)
 
 func _ready() -> void:
+	enemy.display_hp()
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -17,3 +18,6 @@ func on_hit(hit_area):
 
 func die():
 	queue_free()
+
+func set_label(text):
+	$Label.text = text

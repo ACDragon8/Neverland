@@ -4,19 +4,21 @@ extends Character
 
 const MAX_JUMPS: int = 1
 const MAX_ATTACK_TIMES:int = 1
-const ATTACK_COOLDOWN: float = .5
+const ATTACK_COOLDOWN: float = .3
 const ATTACK_VELOCITY: Vector2 = Vector2(1000,200)
 
 const SLASH = preload("res://Prefabs/slash.tscn")
+const BLOCK = preload("res://Prefabs/block.tscn")
 
 var jumps:int = 0
-
+var is_blocking = false
+var block_obj
 
 var on_cooldown: bool = false
 
 func _init(p):
 	super(p)
-	
+	NAME = "Shields"
 func handle_move(delta):
 	super(delta)
 
@@ -29,7 +31,7 @@ func handle_jump(delta):
 		jumps += 1
 
 func attack():
-	if not on_cooldown:
+	if not on_cooldown and not is_blocking:
 		#create slash object and add it to scene
 		var slash = SLASH.instantiate()
 		player.add_child(slash)
@@ -45,7 +47,25 @@ func attack():
 		#wait to finish attack cooldown
 		await player.get_tree().create_timer(ATTACK_COOLDOWN).timeout
 		on_cooldown = false
-		
+
+func ability():
+	if block_obj == null:
+		block_obj = BLOCK.instantiate()
+		player.add_child(block_obj)
+		is_blocking = true
+	else:
+		block_obj.queue_free()
+		is_blocking = false
+	pass
+	
+
+func handle_ability(delta):
+	if not is_blocking and Input.is_action_just_pressed("Ability"):
+		ability()
+	elif Input.is_action_just_released("Ability"):
+		ability()
+
 
 func on_hit(area):
-	super(area)
+	if not is_blocking:
+		super(area)

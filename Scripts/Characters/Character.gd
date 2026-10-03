@@ -2,6 +2,7 @@ class_name Character
 
 extends Node2D
 
+var NAME = "???"
 const SPEED:int  = 2000
 const JUMP_HEIGHT:int = 500
 const GRAVITY:int = 1000
@@ -47,13 +48,19 @@ func handle_jump(delta):
 		jump(delta)
 
 func handle_inputs(delta):
+	handle_attack(delta)
+	handle_ability(delta)
+
+func handle_attack(delta):
 	if state == PlayerStates.IDLE:
 		if Input.is_action_just_pressed("Attack"):
 			attack()
+
+func handle_ability(delta):
+	if state == PlayerStates.IDLE:
 		if Input.is_action_just_pressed("Ability"):
 			ability()
 
-	
 func attack():
 	print("attack")
 

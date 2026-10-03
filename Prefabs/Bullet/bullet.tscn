@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6gv20tqgjad4"]
+
+[ext_resource type="Script" uid="uid://bm6w82cvd1l8f" path="res://Prefabs/Bullet/bullet.gd" id="1_cppbp"]
+[ext_resource type="Texture2D" uid="uid://li0rtmwas263" path="res://Assets/Bullet2.png" id="2_cppbp"]
+[ext_resource type="Script" uid="uid://rcrslwafuwh1" path="res://Scripts/Hitbox.gd" id="3_4wmt8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cppbp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cppbp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wmt8"]
+size = Vector2(5, 1)
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_cppbp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_cppbp")
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("3_4wmt8")
+tag = "player"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_4wmt8")

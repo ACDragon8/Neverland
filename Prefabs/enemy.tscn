@@ -1,9 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3xo8q2uwy5aa"]
+[gd_scene load_steps=11 format=3 uid="uid://c3xo8q2uwy5aa"]
 
 [ext_resource type="Script" uid="uid://4cgi5yvj3e76" path="res://Scripts/EnemyController.gd" id="1_lgw76"]
+[ext_resource type="Shader" uid="uid://e0qmwnd2f4qx" path="res://Prefabs/enemy.gdshader" id="2_n7q57"]
 [ext_resource type="Texture2D" uid="uid://dpinbxvuxq6p6" path="res://icon.svg" id="2_t4g6b"]
 [ext_resource type="Script" uid="uid://dg1xq66dgsife" path="res://Prefabs/Hurtbox.gd" id="3_t4g6b"]
 [ext_resource type="Script" uid="uid://rcrslwafuwh1" path="res://Scripts/Hitbox.gd" id="4_30yes"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80imi"]
+shader = ExtResource("2_n7q57")
+shader_parameter/from = Color(0.146618, 0.375388, 0.975342, 1)
+shader_parameter/to = Color(0.960394, 0, 0.236767, 1)
+shader_parameter/tolerance = 0.855
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8od7v"]
 animations = [{
@@ -32,6 +39,7 @@ slide_on_ceiling = false
 script = ExtResource("1_lgw76")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_80imi")
 sprite_frames = SubResource("SpriteFrames_8od7v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -39,6 +47,7 @@ shape = SubResource("RectangleShape2D_lc1oi")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource("3_t4g6b")
+tag = "enemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_lgw76")
@@ -50,3 +59,13 @@ metadata/_custom_type_script = "uid://rcrslwafuwh1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_30yes")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -88.0
+offset_top = -132.0
+offset_right = 83.0
+offset_bottom = -63.0
+theme_override_font_sizes/font_size = 50
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1

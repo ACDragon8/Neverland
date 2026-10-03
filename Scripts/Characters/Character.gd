@@ -7,12 +7,15 @@ const JUMP_HEIGHT:int = 500
 const GRAVITY:int = 1000
 const MAX_VELOCITY: Vector2 = Vector2(500,500)
 const SLIDE:float = 5 # higher = less slide
+const MAX_HP = 5
+const KB_FACTOR = 500
 
 enum PlayerStates {IDLE, ACTION, COOLDOWN }
 
 var player:CharacterBody2D
 var movement:int = 0 
 var state: PlayerStates
+var hp
 
 
 
@@ -20,6 +23,7 @@ func _init(p):
 	player = p
 	player.set_up_direction(Vector2.UP)
 	state = PlayerStates.IDLE
+	hp = MAX_HP
 
 func handle_move(delta):
 	#gravity
@@ -49,9 +53,6 @@ func handle_inputs(delta):
 		if Input.is_action_just_pressed("Ability"):
 			ability()
 
-
-func hit():
-	print("player hit")
 	
 func attack():
 	print("attack")
@@ -67,3 +68,15 @@ func jump(delta):
 	
 func slide(delta):
 	player.velocity.x -= player.velocity.x * SLIDE * delta
+	
+func on_hit(area):
+	#remove hp
+	print("player hit")
+	hp -= area.damage
+	print(hp)
+	
+	#take knockback
+	print("kb")
+	var knockback = area.global_position.direction_to(player.global_position) * KB_FACTOR
+	print(knockback)
+	player.velocity = knockback

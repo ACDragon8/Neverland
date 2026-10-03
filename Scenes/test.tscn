@@ -82,21 +82,23 @@ position = Vector2(-25, 549)
 rotation = 4.71239
 scale = Vector2(20, 1)
 
-[node name="To Boss" parent="." instance=ExtResource("7_5wyu1")]
-position = Vector2(891, -456)
+[node name="To Boss" parent="." node_paths=PackedStringArray("player", "scene") instance=ExtResource("7_5wyu1")]
+position = Vector2(1315, -1649)
 scale = Vector2(20, 50)
-next_zone = "uid://d3v7jqt4k2nll"
+next_zone = "uid://dv6upwlfedfq7"
+player = NodePath("../Player")
+scene = NodePath("..")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="."]
 
-[node name="Enemy" parent="Node2D" instance=ExtResource("3_qc4db")]
+[node name="Enemy" parent="Enemies" instance=ExtResource("3_qc4db")]
 position = Vector2(538, 290)
 
-[node name="Enemy2" parent="Node2D" instance=ExtResource("3_qc4db")]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("3_qc4db")]
 position = Vector2(582, -92)
 
-[node name="Enemy3" parent="Node2D" instance=ExtResource("3_qc4db")]
+[node name="Enemy3" parent="Enemies" instance=ExtResource("3_qc4db")]
 position = Vector2(1115, -385)
 
-[node name="Enemy4" parent="Node2D" instance=ExtResource("3_qc4db")]
+[node name="Enemy4" parent="Enemies" instance=ExtResource("3_qc4db")]
 position = Vector2(193, -499)

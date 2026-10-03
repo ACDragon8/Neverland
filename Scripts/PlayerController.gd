@@ -2,7 +2,7 @@ extends CharacterBody2D
 var char: Character = Shields.new(self)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Camera2D.make_current()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,3 +14,8 @@ func _physics_process(delta:float) -> void:
 	char.handle_jump(delta)
 	char.handle_inputs(delta)
 	move_and_slide()
+	
+func on_hit(hit_area):
+	if hit_area.tag != "player":
+		char.on_hit(hit_area)
+		

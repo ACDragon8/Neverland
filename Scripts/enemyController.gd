@@ -12,4 +12,8 @@ func _physics_process(delta: float) -> void:
 	enemy.handle_movement(delta)
 
 func on_hit(hit_area):
-	enemy.on_hit(hit_area)
+	if hit_area.tag != "enemy":
+		enemy.on_hit(hit_area)
+
+func die():
+	queue_free()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch0vntibgtse8"]
+[gd_scene load_steps=9 format=3 uid="uid://ch0vntibgtse8"]
 
 [ext_resource type="Script" uid="uid://drysf0j7m5kcm" path="res://Scripts/PlayerController.gd" id="1_5wxv7"]
 [ext_resource type="Texture2D" uid="uid://dpinbxvuxq6p6" path="res://icon.svg" id="2_y5hcb"]
+[ext_resource type="Script" uid="uid://dg1xq66dgsife" path="res://Prefabs/Hurtbox.gd" id="3_y5hcb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8od7v"]
 animations = [{
@@ -25,6 +26,9 @@ _data = {
 &"Jump": SubResource("Animation_5wxv7")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5hcb"]
+size = Vector2(128, 128)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 collision_layer = 0
@@ -45,3 +49,10 @@ limit_bottom = 648
 libraries = {
 &"": SubResource("AnimationLibrary_y5hcb")
 }
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("3_y5hcb")
+metadata/_custom_type_script = "uid://dg1xq66dgsife"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_y5hcb")

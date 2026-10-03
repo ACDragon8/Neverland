@@ -13,6 +13,8 @@ script = ExtResource("1_drlhg")
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(-74, -0.5)
 script = ExtResource("1_eadnf")
+damage = 2
+tag = "player"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(112, -1)

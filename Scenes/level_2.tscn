@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://d3v7jqt4k2nll"]
+[gd_scene load_steps=4 format=3 uid="uid://d3v7jqt4k2nll"]
+
+[ext_resource type="PackedScene" uid="uid://ch0vntibgtse8" path="res://Prefabs/player.tscn" id="1_v3rpw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v3rpw"]
+rough = true
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_smnlx"]
 
 [node name="Level 2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_v3rpw")]
+position = Vector2(29, 538)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 550)
+physics_material_override = SubResource("PhysicsMaterial_v3rpw")
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+offset_right = 100000.0
+offset_bottom = 128.0
+color = Color(0.736783, 0.511507, 0.424749, 1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_smnlx")
+metadata/_edit_group_ = true

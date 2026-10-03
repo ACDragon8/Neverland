@@ -2,7 +2,7 @@ class_name Dragon
 
 extends Character
 
-const MAX_JUMPS: int = 1
+const MAX_JUMPS: int = 0
 const MAX_ATTACK_TIMES:int = 1
 const ATTACK_COOLDOWN: float = .5
 const ATTACK_VELOCITY: Vector2 = Vector2(1000,200)

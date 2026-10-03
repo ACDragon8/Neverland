@@ -42,7 +42,8 @@ func attack():
 		if not player.is_on_floor():
 			var mouse_pos = player.get_global_mouse_position()
 			var player_pos =  player.global_position
-			player.velocity.y = 0
+			if player.velocity.y > 0 :
+				player.velocity.y = 0
 			player.velocity += (mouse_pos - player_pos).normalized() * ATTACK_VELOCITY
 		#wait to finish attack cooldown
 		await player.get_tree().create_timer(ATTACK_COOLDOWN).timeout

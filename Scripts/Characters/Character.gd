@@ -4,9 +4,9 @@ extends Node2D
 
 var NAME = "???"
 const SPEED:int  = 2000
-const JUMP_HEIGHT:int = 500
+const JUMP_HEIGHT:int = 700
 const GRAVITY:int = 1000
-const MAX_VELOCITY: Vector2 = Vector2(500,500)
+const MAX_VELOCITY: Vector2 = Vector2(500,750)
 const SLIDE:float = 5 # higher = less slide
 const MAX_HP = 5
 const KB_FACTOR = 500

@@ -103,3 +103,24 @@ position = Vector2(1115, -385)
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("3_qc4db")]
 position = Vector2(193, -499)
+
+[node name="f" type="Label" parent="."]
+offset_left = 511.0
+offset_top = 7.0
+offset_right = 680.0
+offset_bottom = 134.0
+text = "Shields can double jump
+Shift = Block
+
+Dragon has a shotgun"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 49.0
+offset_top = 355.0
+offset_right = 218.0
+offset_bottom = 482.0
+text = "WASD - MOVE
+SPACE - JUMP
+Left Click = Attack
+Shift = Ability
+Q = Switch Characters"

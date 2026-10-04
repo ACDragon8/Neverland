@@ -105,10 +105,10 @@ position = Vector2(1115, -385)
 position = Vector2(193, -499)
 
 [node name="f" type="Label" parent="."]
-offset_left = 511.0
-offset_top = 7.0
-offset_right = 680.0
-offset_bottom = 134.0
+offset_left = 495.0
+offset_top = -277.0
+offset_right = 684.0
+offset_bottom = -150.0
 text = "Shields can double jump
 Shift = Block
 

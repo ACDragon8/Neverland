@@ -12,6 +12,7 @@ const BULLET_SPEED = 1000
 const BULLET_SPREAD = .05
 const BULLET_COUNT = 8
 
+const ABILITY_COOLDOWN: float = 2
 
 
 const BULLET = preload("res://Prefabs/Bullet/bullet.tscn")
@@ -21,6 +22,7 @@ var is_blocking = false
 var block_obj
 
 var on_cooldown: bool = false
+var ability_on_cooldown:bool = false
 
 func _init(p):
 	super(p)
@@ -54,7 +56,26 @@ func attack():
 		on_cooldown = false
 
 func ability():
-	super()
+	if not ability_on_cooldown:
+		ability_on_cooldown = true
+		super()
+		#raycast to mouse pointer
+		var raycast = RayCast2D.new()
+		
+		raycast.target_position = player.get_global_mouse_position()
+		raycast.enabled = true
+		player.add_child(raycast)
+		var result = raycast.get_collision_point()
+		#teleport to raycast hit
+		if result:
+			print("a")
+			player.global_position = result
+		else:
+			print("b")
+			player.global_position = player.get_global_mouse_position()
+		await player.get_tree().create_timer(ABILITY_COOLDOWN).timeout
+		ability_on_cooldown = false
+		
 	
 
 func handle_ability(delta):

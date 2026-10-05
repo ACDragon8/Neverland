@@ -29,11 +29,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5hcb"]
 size = Vector2(128, 128)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("raycast")]
 scale = Vector2(0.25, 0.25)
 collision_layer = 0
 slide_on_ceiling = false
 script = ExtResource("1_5wxv7")
+raycast = NodePath("RayCast2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8od7v")
@@ -67,3 +68,6 @@ theme_override_font_sizes/font_size = 50
 text = "Shields"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(64, 0)

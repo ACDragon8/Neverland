@@ -78,15 +78,25 @@ position = Vector2(1314, -650)
 rotation = 1.5708
 scale = Vector2(12, 1)
 
+[node name="Wall" parent="Platforms/Wall" instance=ExtResource("2_8od7v")]
+position = Vector2(1314, -650)
+rotation = 1.5708
+scale = Vector2(12, 1)
+
 [node name="Wall2" parent="Platforms" instance=ExtResource("2_8od7v")]
 position = Vector2(-25, 549)
 rotation = 4.71239
 scale = Vector2(20, 1)
 
+[node name="Wall3" parent="Platforms" instance=ExtResource("2_8od7v")]
+position = Vector2(1342, -1850)
+rotation = 1.5708
+scale = Vector2(12, 1)
+
 [node name="To Boss" parent="." node_paths=PackedStringArray("player", "scene") instance=ExtResource("7_5wyu1")]
-position = Vector2(1315, -1649)
+position = Vector2(1285, -1649)
 scale = Vector2(20, 50)
-next_zone = "uid://dv6upwlfedfq7"
+next_zone = "uid://d3v7jqt4k2nll"
 player = NodePath("../Player")
 scene = NodePath("..")
 
@@ -112,7 +122,8 @@ offset_bottom = -150.0
 text = "Shields can double jump
 Shift = Block
 
-Dragon has a shotgun"
+Dragon has a shotgun
+Shift = Teleport"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 49.0

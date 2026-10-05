@@ -60,18 +60,15 @@ func ability():
 		ability_on_cooldown = true
 		super()
 		#raycast to mouse pointer
-		var raycast = RayCast2D.new()
-		
-		raycast.target_position = player.get_global_mouse_position()
+		var raycast = player.raycast
+		raycast.target_position = raycast.to_local(player.get_global_mouse_position())
 		raycast.enabled = true
-		player.add_child(raycast)
-		var result = raycast.get_collision_point()
 		#teleport to raycast hit
-		if result:
-			print("a")
+		if raycast.is_colliding():
+			var result = raycast.get_collision_point()
 			player.global_position = result
+			print(raycast.get_collider())
 		else:
-			print("b")
 			player.global_position = player.get_global_mouse_position()
 		await player.get_tree().create_timer(ABILITY_COOLDOWN).timeout
 		ability_on_cooldown = false

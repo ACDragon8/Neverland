@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3v7jqt4k2nll"]
+[gd_scene load_steps=5 format=3 uid="uid://d3v7jqt4k2nll"]
 
 [ext_resource type="PackedScene" uid="uid://ch0vntibgtse8" path="res://Prefabs/player.tscn" id="1_v3rpw"]
+[ext_resource type="PackedScene" uid="uid://bth2inung8lbk" path="res://Prefabs/transition_zone.tscn" id="2_smnlx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v3rpw"]
 rough = true
@@ -9,8 +10,9 @@ rough = true
 
 [node name="Level 2" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_v3rpw")]
+[node name="Player" parent="." node_paths=PackedStringArray("scene") instance=ExtResource("1_v3rpw")]
 position = Vector2(29, 538)
+scene = NodePath("..")
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(0, 550)
@@ -25,3 +27,10 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("WorldBoundaryShape2D_smnlx")
 metadata/_edit_group_ = true
+
+[node name="To Boss" parent="." node_paths=PackedStringArray("player", "scene") instance=ExtResource("2_smnlx")]
+position = Vector2(755, -456)
+scale = Vector2(20, 50)
+next_zone = "uid://dv6upwlfedfq7"
+player = NodePath("../Player")
+scene = NodePath("..")

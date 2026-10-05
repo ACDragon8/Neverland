@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
+@export var raycast:RayCast2D
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 var enemy:Enemy = Enemy.new(self)
+
 
 func _ready() -> void:
 	enemy.display_hp()

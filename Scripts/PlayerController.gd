@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var scene:Node2D
+@export var raycast:RayCast2D
 
 var char: Character 
 var character_list = []
